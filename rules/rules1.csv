@@ -1,0 +1,5 @@
+###object  field condition fieldvalue result resultvalue
+###
+product, name, equals, all, interest_rate, 5.0
+person, state, equals, FL, disqualified, true
+person, credit_score, greater_equal, 720, product 
