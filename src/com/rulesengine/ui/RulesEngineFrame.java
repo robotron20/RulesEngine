@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -18,9 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.rulesengine.controller.RulesEngine;
+import com.rulesengine.loader.CSVLoader;
+import com.rulesengine.loader.Loader;
 import com.rulesengine.model.Person;
 import com.rulesengine.model.Product;
-import com.rulesengine.model.Rules;
+import com.rulesengine.model.Rule;
 
 public class RulesEngineFrame extends JFrame {
 	
@@ -33,7 +36,7 @@ public class RulesEngineFrame extends JFrame {
 	private JTextArea resultArea = new JTextArea();
 	
 	private RulesEngine rulesEngine = new RulesEngine();
-	private Rules rules;
+	private ArrayList<Rule> ruleList;
 		
 	public RulesEngineFrame() {
 		
@@ -95,7 +98,7 @@ public class RulesEngineFrame extends JFrame {
 					String path = file.getAbsolutePath();
 					locationTextField.setText(path);
 					
-					rules = loadRules();
+					ruleList = loadRules(file);
 					
 					runButton.setEnabled(true);
 					
@@ -112,10 +115,21 @@ public class RulesEngineFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				Person person = new Person(720, "FL");
+				Person person = new Person(720, "Florida");
 				Product product = new Product("7-1 ARM", 5.0, false);
-
-				rulesEngine.runRules(person, product, rules);
+				
+				resultArea.append("Input\n");
+				resultArea.append("=====\n");
+				resultArea.append(person.toString() + "\n");
+				resultArea.append(product.toString() + "\n");				
+				resultArea.append("\n");
+				
+				rulesEngine.runRules(person, product, ruleList);
+				
+				resultArea.append("Output\n");
+				resultArea.append("======\n");
+				resultArea.append(person.toString() + "\n");
+				resultArea.append(product.toString() + "\n");
 				
 			}
 			
@@ -124,8 +138,17 @@ public class RulesEngineFrame extends JFrame {
 				
 	}
 	
-	private Rules loadRules() {
-		return new Rules();
+	private ArrayList<Rule> loadRules(File file) {
+		
+		Loader loader = new CSVLoader();
+		try {
+			return loader.load(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return new ArrayList<Rule>();
+		
 	}
 
 	public static void main(String[] args) {

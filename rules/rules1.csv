@@ -1,5 +1,8 @@
-###object  field condition fieldvalue result resultvalue
-###
-product, name, equals, all, interest_rate, 5.0
-person, state, equals, FL, disqualified, true
-person, credit_score, greater_equal, 720, product 
+Condition,Product,Name,NotEqual,String,null
+Action,Set,Product,InterestRate,Double,5.0
+Condition,Person,State,Equal,String,Florida
+Action,Set,Product,Disqualified,Boolean,true
+Condition,Person,CreditScore,GreaterEqual,Integer,720
+Action,Subtract,Product,InterestRate,Double,0.3
+Condition,Person,CreditScore,LessThan,Integer,720
+Action,Add,Product,InterestRate,Double,0.5

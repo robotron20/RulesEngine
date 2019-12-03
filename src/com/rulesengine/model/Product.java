@@ -4,9 +4,9 @@ public class Product {
 	
 	private String name;
 	private Double interestRate;
-	private boolean disqualified;
+	private Boolean disqualified;
 	
-	public Product(String name, Double interestRate, boolean disqualified) {
+	public Product(String name, Double interestRate, Boolean disqualified) {
 		
 		super();
 		
@@ -30,11 +30,15 @@ public class Product {
 		this.interestRate = interestRate;
 	}
 	
-	public boolean isDisqualified() {
+	public Boolean getDisqualified() {
 		return disqualified;
 	}
-	public void setDisqualified(boolean disqualified) {
+	public void setDisqualified(Boolean disqualified) {
 		this.disqualified = disqualified;
-	}	
+	}
+	
+	public String toString() {
+		return "Name: " + name + " Interest Rate: " + interestRate + " Disqualified: " + disqualified;
+	}
 
 }

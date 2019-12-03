@@ -1,18 +1,22 @@
 package com.rulesengine.model;
 
-enum Type {
-	
-	INIT,
-	CONDITION
-	
-}
-
 public class Rule {
 	
-	private Type type;
+	private Condition condition;
+	private Action action;
 	
-	private String objectName;
-	private String fieldName;
-	private String value;
+	public Condition getCondition() {
+		return condition;
+	}
+	public void setCondition(Condition condition) {
+		this.condition = condition;
+	}
+	
+	public Action getAction() {
+		return action;
+	}
+	public void setAction(Action action) {
+		this.action = action;
+	}
 	
 }

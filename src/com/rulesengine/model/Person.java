@@ -28,4 +28,8 @@ public class Person {
 		this.state = state;
 	}
 	
+	public String toString() {
+		return "Credit Score: " + creditScore + " State: " + state;
+	}
+	
 }
