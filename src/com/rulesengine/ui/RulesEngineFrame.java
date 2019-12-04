@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.rulesengine.controller.RulesEngine;
 import com.rulesengine.loader.CSVLoader;
+import com.rulesengine.loader.JSONLoader;
 import com.rulesengine.loader.Loader;
 import com.rulesengine.model.Person;
 import com.rulesengine.model.Product;
@@ -140,9 +141,21 @@ public class RulesEngineFrame extends JFrame {
 	
 	private ArrayList<Rule> loadRules(File file) {
 		
-		Loader loader = new CSVLoader();
 		try {
-			return loader.load(file);
+			
+			if (file.getName().endsWith(".csv")) {
+				
+				Loader loader = new CSVLoader();
+				return loader.load(file);
+				
+			}
+			else if (file.getName().endsWith(".json")) {
+				
+				Loader loader = new JSONLoader();
+				return loader.load(file);
+				
+			} 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

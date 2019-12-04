@@ -20,6 +20,11 @@ public class Condition {
 		this.dataType = dataType;
 		this.value = value;
 		
+		//Special case for null keyword
+		if (value.equals("null")) {
+			this.value = null;
+		}
+		
 	}
 	
 	public boolean isValid(Person person, Product product) {
@@ -52,10 +57,10 @@ public class Condition {
 				
 				String tempValue = (String)methodValue;
 				
-				if (compareType.equals("Equal") && (value.equals(tempValue))) {					
+				if (compareType.equals("Equal") && (tempValue.equals(value))) {					
 					return true;
 				}
-				else if (compareType.equals("NotEqual") && (!value.equals(tempValue))) {
+				else if (compareType.equals("NotEqual") && (!tempValue.equals(value))) {
 					return true;
 				}
 				
