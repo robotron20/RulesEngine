@@ -116,6 +116,8 @@ public class RulesEngineFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				resultArea.setText("");
+				
 				Person person = new Person(720, "Florida");
 				Product product = new Product("7-1 ARM", 5.0, false);
 				
