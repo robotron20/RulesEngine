@@ -121,7 +121,7 @@ public class RulesEngineFrame extends JFrame {
 				Person person = new Person(720, "Florida");
 				Product product = new Product("7-1 ARM", 5.0, false);
 				
-				resultArea.append("Inputs\n");
+				resultArea.append("Input\n");
 				resultArea.append("=====\n");
 				resultArea.append(person.toString() + "\n");
 				resultArea.append(product.toString() + "\n");				
